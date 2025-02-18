@@ -239,26 +239,27 @@
 											<br />
 											<h3>Breakdown</h3>
 
-											<p><span class="image left"><img height="auto" width="100%" src="../../images/chrono wave mode.jpg" alt="" />(Planning of the wave-based structure)</span>
+											<p><span class="image left"><img height="auto" width="100%" src="../../images/chrono wave mode.jpg" alt="" /></span>
 												For the wave based mode, the first thing I did was draft this structure for customizing waves. You could designate how many total waves there are, and within each one you can
 												customize which enemies spawn, how many of them spawn, and potential rewards given to the player upon finishing that wave.
 											</p>
 											<p>
 												For the actual implementation, the wave based functionality was put onto a placeable actor, with a radius around the object to designate the range where enemies could spawn in.
-												For the wave-based actor to know if the spawned enemy was killed, it binds to each enemy's "OnDeath" dispatcher to remove that actor from the list.
+												For the wave-based actor to know if the spawned enemy was killed, it builds an array when each enemy spawns in, binds to each enemy's "OnDeath" dispatcher, and removes that actor from the array.
 											</p>
 											<p>
 												If all are removed, the current wave ends,
-												and the next wave begins, spawning the new actors in that wave's list. The wave  playing certain sound effects or music that might play on that wave,
+												and the next wave begins, spawning the new actors in that wave's list of enemies. The wave then plays certain sound effects or music that might play on that wave,
 												either within the actor or from a dispatcher bind on another.
 											</p>
+												<div class="col-4"><span class="image fit"><img src="../../images/wave mode engine.PNG" alt="" /></span></div>
 
 											<br />
 											<h3>Did It Work?</h3>
 
 											<p>
 												On the player side, things worked out really well. People were battling enemies, dying, and coming back to do better in the next game after they learned a bit more about the game.
-												The final game had about 5 waves, and 
+												The final game has about 5 waves, and between each one 
 											</p>
 
 											<br />
