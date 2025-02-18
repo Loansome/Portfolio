@@ -218,7 +218,7 @@
 
 											<details><summary><h2 class="major" style="display:inline-block">2. Macro Gameplay Loop</h2></summary>
 												<p>This section goes over the overarching gameplay and features players can experience during the demo.
-													Specifically, it will go over the wave-based mode and death area.</p>
+													Specifically, it will be a look at the wave-based mode.</p>
 											<br />
 
 											<h3>Explanation</h3>
@@ -239,22 +239,54 @@
 											<br />
 											<h3>Breakdown</h3>
 
-											<p><span class="image left"><img height="auto" width="100%" src="../../images/chrono wave mode.jpg" alt="" />(Planning of the wave-based structure)</span>
-												fdsafdsf
+											<p><span class="image left"><img height="auto" width="100%" src="../../images/chrono wave mode.jpg" alt="" /></span>
+												For the wave based mode, the first thing I did was draft this structure for customizing waves. You could designate how many total waves there are, and within each one you can
+												customize which enemies spawn, how many of them spawn, and potential rewards given to the player upon finishing that wave.
 											</p>
+											<p>
+												For the actual implementation, the wave based functionality was put onto a placeable actor, with a radius around the object to designate the range where enemies could spawn in.
+												For the wave-based actor to know if the spawned enemy was killed, it builds an array when each enemy spawns in, binds to each enemy's "OnDeath" dispatcher, and removes that actor from the array.
+											</p>
+											<p>
+												If all are removed, the current wave ends,
+												and the next wave begins, spawning the new actors in that wave's list of enemies. The wave then plays certain sound effects or music that might play on that wave,
+												either within the actor or from a dispatcher bind on another.
+											</p>
+												<div class="col-4"><span class="image fit"><img src="../../images/wave mode engine.PNG" alt="" /></span></div>
 
 											<br />
 											<h3>Did It Work?</h3>
 
 											<p>
-												
+												On the player side, having the wave-based format within a small arena was a big success for getting people accustomed with the game, without us needing to spend any extra development time.
+												People were battling enemies, dying, and coming back to do better in the next game after they learned a bit more about the underlying systems.
+												The final game has about 5 waves, and most people were able to get past one or two of them before they had to retry. After a few tries, once they got a better hang of the combat,
+												they could get through the battles more consistently and could eventually finish all 5 waves.
+											</p>
+											<p>
+												On the developer end, it was really easy to hot swap enemies and amounts of them. If I needed more waves or wanted to tweak things around, it was easy to change them up.
+												Although, it is fairly barebones, and I would like to make more adjustments in the future for better support of other features seen in other games with wave based encounters.
 											</p>
 
 											<br />
 											<h3>Future Improvements</h3>
 
 											<p>
-												
+												Some games have players in a pure endless horde of enemies, some have more defined waves to battle through and eventually beat, and some might just have a section of the map
+												where players are stuck and need to defeat all the remaining enemies before they can progress. And in some games, they have all 3 systems at different points of the same game.
+												With that in mind, I think it would be wonderful to expand these systems for more flexibility later down the road so we can reuse the wave format in other contexts.
+											</p>
+											<p>
+												While things do work out okay as they are, there is a lot of room for things to be expanded on. Currently, the waves are handled on an actor that's placed in game, though considering it is
+												a "game mode", I would like to extend that functionality to part of Unreal's own game mode system so the game can handle different types of experiences.
+											</p>
+											<p>
+												Some things that I think could be improved on for the functionality of the waves themselves is to support endless waves with dynamic spawns to see how far players get,
+												and support mid-round spawning. As it is now, every enemy in the wave spawns at once, but having the game stagger a wave out or keep a more manageable limit of actors I think would work better.
+											</p>
+											<p>
+												And speaking of spawning, the enemies only spawn within a random range. Some other games like to spawn enemies in particular positions,
+												so adding support for custom placements would help a lot as well.
 											</p>
 											</details>
 										</div>
@@ -283,6 +315,7 @@
 													<li>naturally regenerating, up to a point</li>
 												</ul>
 												If the designer intends, Chrono can only naturally regenerate up to a certain amount, and players will need to fill the rest up by taking a more active role by hitting or defeating enemies.
+												Although even without this, players are still incentivized to get into the action to build up their Chrono Gauge more often
 											</p>
 
 											<br />
@@ -349,8 +382,7 @@
 
 											<p>
 												
-												<img height="auto" width="50%" src="../../images/chrono new hitbox.png" alt="" />
-												<img height="auto" width="30%" src="../../images/chrono new hitbox data.png" alt="" />
+												<div class="col-4"><span class="image fit"><img src="../../images/chrono gas hitbox.png" alt="" /></span></div>
 											</p>
 											<p></p>
 											</details>
@@ -416,14 +448,15 @@
 				<section id="footer">
 					<div class="inner">
 						<h2 class="major">Get in touch</h2>
-						<p>If you see something you like, feel free to reach out!</p>
+						<p></p>
 						
 						<ul class="contact">
-							<li class="icon solid fa-envelope"><a>gabrielsalomone.art@gmail.com</a></li>
+							<li class="icon solid fa-envelope"><a href="mailto:gabrielsalomone.art@gmail.com">gabrielsalomone.art@gmail.com</a></li>
 							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gabriel-salomone-630917218/">Connect on LinkedIn</a></li>
 						</ul>
 						<ul class="copyright">
-							<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; Untitled Inc. All rights reserved.</li>
+							<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 						</ul>
 					</div>
 				</section>
