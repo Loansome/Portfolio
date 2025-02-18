@@ -258,15 +258,35 @@
 											<h3>Did It Work?</h3>
 
 											<p>
-												On the player side, things worked out really well. People were battling enemies, dying, and coming back to do better in the next game after they learned a bit more about the game.
-												The final game has about 5 waves, and between each one 
+												On the player side, having the wave-based format within a small arena was a big success for getting people accustomed with the game, without us needing to spend any extra development time.
+												People were battling enemies, dying, and coming back to do better in the next game after they learned a bit more about the underlying systems.
+												The final game has about 5 waves, and most people were able to get past one or two of them before they had to retry. After a few tries, once they got a better hang of the combat,
+												they could get through the battles more consistently and could eventually finish all 5 waves.
+											</p>
+											<p>
+												On the developer end, it was really easy to hot swap enemies and amounts of them. If I needed more waves or wanted to tweak things around, it was easy to change them up.
+												Although, it is fairly barebones, and I would like to make more adjustments in the future for better support of other features seen in other games with wave based encounters.
 											</p>
 
 											<br />
 											<h3>Future Improvements</h3>
 
 											<p>
-												
+												Some games have players in a pure endless horde of enemies, some have more defined waves to battle through and eventually beat, and some might just have a section of the map
+												where players are stuck and need to defeat all the remaining enemies before they can progress. And in some games, they have all 3 systems at different points of the same game.
+												With that in mind, I think it would be wonderful to expand these systems for more flexibility later down the road so we can reuse the wave format in other contexts.
+											</p>
+											<p>
+												While things do work out okay as they are, there is a lot of room for things to be expanded on. Currently, the waves are handled on an actor that's placed in game, though considering it is
+												a "game mode", I would like to extend that functionality to part of Unreal's own game mode system so the game can handle different types of experiences.
+											</p>
+											<p>
+												Some things that I think could be improved on for the functionality of the waves themselves is to support endless waves with dynamic spawns to see how far players get,
+												and support mid-round spawning. As it is now, every enemy in the wave spawns at once, but having the game stagger a wave out or keep a more manageable limit of actors I think would work better.
+											</p>
+											<p>
+												And speaking of spawning, the enemies only spawn within a random range. Some other games like to spawn enemies in particular positions,
+												so adding support for custom placements would help a lot as well.
 											</p>
 											</details>
 										</div>
