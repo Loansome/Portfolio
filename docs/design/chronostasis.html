@@ -329,6 +329,13 @@
 												so the next best thing was to have the combat and attack animations have enough weight and differentiate themselves from each other to still make it satisfying to play.
 											</p>
 											<p>
+												Another aspect that I particularly looked out for was making sure that players were able to deal damage right away, almost right next to when they pressed the button.
+												If players wanted to attack, the animation and hitboxes needed to follow suit to make sure their wish would be answered as soon as possible.
+												Players don't want to wait for their attack to happen if they can help it.
+												The only exception to this rule is if the attack has some other utility that benefits the player before the attack hits. In Kingdom Hearts, usually this gives the player
+												extra defensive frames to prevent enemy onslaught, or some aspect that could potentially lead to damage in the future.
+											</p>
+											<p>
 												<span class="image fit"><video height="auto" width="100%" controls autoplay loop muted><source src="../../videos/attack dash.mp4"></video></span>
 												The player starts their combo with an attack that pulls the player closer to their enemies, and unleashes a handful of extra swipes on them.
 												This attack was made so players can start getting right into the action without worrying too much about their positioning to the enemy. If the player sees an opportunity
@@ -350,9 +357,9 @@
 											</p>
 											<p>
 												<span class="image fit"><video height="auto" width="100%" controls autoplay loop muted><source src="../../videos/attack finisher.mp4"></video></span>
-												The final move is a flashy finisher and is the player's reward for completing the combo. While it may seem long,
+												The final move is a flashy finisher and is the player's big reward for completing the combo. While it may seem long,
 												the spinning part of the attack has parry frames attached, protecting you from hits,
-												and the attack itself dashes straight forward and deals a sizeable amount of damage to anything that comes across it.
+												and the attack itself punishes the enemy by dashing straight forward, dealing a sizeable amount of damage to anything that comes across it.
 											</p>
 
 											<p>
@@ -366,7 +373,8 @@
 											<p>
 												<span class="image left"><img src="../../images/damage values.png" alt="" /></span>
 												Attacks also can do certain kinds of things when they hit an enemy. Hitboxes can spawn with a specified radius, either on the player or on their equipped weapon at certain socket points,
-												and they can not only deal raw damage to their target, but they can deal different kinds of knockback, regenerate some Chrono on each hit, and apply a certain level of Revenge Value on each hit.
+												and they can not only deal raw damage to their target, but they can deal different kinds of knockback, regenerate some Chrono on each hit, and apply a certain level of Revenge Value on each hit
+												(see the Enemy section for info on RV).
 											</p>
 											<p>
 												These extra settings give a lot more freedom for flexible and customizeable hits on enemies, making each hit do things a little differently to stand out.
@@ -386,16 +394,63 @@
 											<h3>Did It Work?</h3>
 
 											<p>
-
-												d
+												This "attack role" approach helped a lot with making the gameplay look and feel fresh without feeling like too much. Players of all kinds really enjoyed using these attacks,
+												and some could even admire the specific fighting style of the character from the attacks I went with.
+												Each attack fit the role they were assigned, and you could clearly distinguish between them.
+											</p>
+											<p>
+												With these roles, people were able to land just about every hit they wanted to, break out when they needed to, and were punished for when they over-extended,
+												with the ocassional full parry with the scythe finisher. No attack punished or frustrated the player, and everyone felt like they had full control over the game,
+												even if they were only just starting out (even my 5 year old nephew was able to keep up with the game and make good progress).
+											</p>
+											<p>
+												While the attacks did work out how I needed them to, the animations themselves were criticised for being a bit too slow for some people's liking (including myself).
+												For such a fast-paced game and genre inspiration, the attacks need to be quick enough to feel satisfying and like you're linking up all your hits.
+												It currently fits well enough with the enemies who suffer a similar problem, but for an action game, it definitely needs a speed buff.
+											</p>
+											<p>
+												For the defensive abilities, the dodge and block similarly worked as expected, but the block might need more of a focus to be used properly and more often.
+												Players found more use for dodging than they did blocking, and while part of that was from the way the controls were set up, blocking didn't seem to do
+												enough to satisfy its use over dodging.
 											</p>
 
 											<br />
 											<h3>Future Improvements</h3>
 
 											<p>
-												
+												One of the first things to improve with the attacks to make them more satisfying are potentially replacing all the animations so they're faster and snappier.
+												With animations, you can't just speed them up to fix their issues, they need to be re-timed to make certain segments faster or slower, and at most,
+												fully remaking them to fit a new style.
+											</p>
+											<p>
+												The biggest improvement that can be made is to do away with the linearity of the 3 hit combo and expand to support more kinds of attacks.
+												Instead of adding attacks to inputs and complicating the user experience, it should use a context-based approach similar to Kingdom Hearts,
+												where the structure of attacks might stay the same, but attacks change based on proximity/spacing from opponents or where in the combo your attack is.
+												With a system like this, there'd definitely need to be more attacks to support the different contexts that trigger the animations.
+												<br />
+												Within my GAS rewrite of Chronostasis, I have started experimenting with this by using the Chooser system to select the different attacks based on combo count and values relating
+												to the closest targets from the player. Although, it has been a little bit messy, as you can't check if an ability is equipped before choosing it.
+												<div class="col-4"><span class="image fit"><img src="../../images/proximity chooser.png" alt="" /></span></div>
+											</p>
+											<p>
+												Another part of this that needs to be extended are air attacks. There was some code in the game for handling root motion in the air or launching the character around, although
+												there was little time to handle implement many air based attacks.
+											</p>
+											<p>
+												While it might be more far reaching for adding more weapons and attacks related to those, I would like to have a system in place as a secondary way of doing damage.
+												Having a resource to spend and regain for extra attacks would work really well for expanding player expression and would help other parts of the game come together.
+											</p>
+											<p>
+												For hitboxes, while the method shown earlier worked out okay, it only supports a single hitbox and definitely needed an overhaul.
+												With the developments in the GAS system, I found a good rework method,
+												by making an array of hitboxes with their own placements and sizes, but all counting as a single hit.
+												I also added parry hitboxes that use the same kind of functionality, where you can summon as many as you want while making it count as a single hit.
 												<div class="col-4"><span class="image fit"><img src="../../images/chrono gas hitbox.png" alt="" /></span></div>
+											</p>
+											<p>
+												As far as defensive abilities are concerned, dodging seems like it's doing its job okay, but blocking needs to affect the game world in better ways. The first thing that comes to mind
+												is to have a successful block cause a stagger for enemies, and likely also reflect projectiles back to the opponent. It may also have a specific "counter attack" animation that helps
+												the player continue the pressure against the opponent.
 											</p>
 											<p></p>
 											</details>
