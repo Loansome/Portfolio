@@ -473,29 +473,105 @@
 											<h3>Explanation</h3>
 
 											<p>
-												
+												The micro loop of Chronostasis is represented through the enemies of the game, as Chronostasis is a combat-focused experience between the player and the enemies they face.
+												For the game to have a loop and engaging quality to fighting enemies, there were a lot of considerations taken with designing the enemies of Chronostasis.
+											</p>
+											<p>
+												Enemies face the player in a back-and-forth style of gameplay, where enemies try to strike while the player is watching out for their attacks and attempts to respond
+												by punishing their moves or otherwise getting a good read on them. If they are unsuccessful, they get hit and need to try again, but if they succeed, they are rewarded
+												with a window to punish them and do some damage with their combos. Then, after enough hits the enemies try to retaliate back, forcing the player to try and
+												guess again, serving as a good loop between the two.
+											</p>
+											<p>
+												After these mini loops are done and the player defeats the enemies, they get rewarded with "prizes" in the form of orbs that refill the player's stats and resources,
+												which in the demo constitute as health and Chrono, and allow the player to do better in future encounters.
+											</p>
+											<p>
+												Enemies also are differentiated between themselves by fitting into different roles, causing the player to approach each one differently. Players will have to watch their range
+												against enemies and their attacks, which can differ depending on the opponent and what attack they throw out.
 											</p>
 
 											<br />
 											<h3>Breakdown</h3>
 
 											<p>
-												
+												For Chronostasis to accurately represent this back-and-forth nature to fighting enemies, the first thing to take into consideration was making sure their attacks could be reactable.
+												If you can't accurately guess and respond to what the enemies were doing or properly punish them, then the loop falls apart instantly.
+												So enemies had to take longer for their attacks to come out and recover compared to the player's, so that enemies had proper windows to learn and react From
+												without getting frustrating. We hate enemies that feel like they can just insta-kill you, so there needs to be some wiggle room for players to learn.
 											</p>
+											<p>
+												After that, once players do get their successful read and punish on their enemies, to prevent the player from infinitely comboing and losing the flow after getting a single hit in,
+												enemies have a stat called "revenge value" that builds up over time as they get hit more and more. They are free to be attacked while that gauge is still going, though once it fills up
+												after enough hits, they will take their turn back from the player and reset the loop back to the start, where the player needs to take action and figure out their opponent's
+												next move before they can continue their assault.
+											</p>
+											<div class="col-4"><span class="image fit"><video height="auto" width="100%" controls muted><source src="../../videos/revenge value explanation.mp4"></video></span></div>
+
+											<p>
+												As for the roles of the enemies, there were 2 that could be seen in the game - the close ranged, speedy assaulter, and the long ranged tank.
+												The assaulting enemy likes to get close and personal and can shred you with some multi-hit attacks, while the tank typically likes to fire at you from a safe distance.
+												Though if you do get too close with the tank, they can do some heavy damage to you.
+											</p>
+											<p>
+												With these roles in mind, it was critical to convey them in a well defined design and silhouette that could be read and understood by the players.
+												For that, the assaulter has a sleeker look to them with a lot of sharp edges, implying its higher mobility and sharp attacks, while the tank has a larger and more grounded
+												aspect to it, alluding to their stationary yet beefy abilities, and hosts a cannon launcher at the top to signify their preference for range.
+											</p>
+											<div class="col-4"><span class="image fit"><img src="../../images/chrono enemies.png" alt="" />(The 2 enemies in Chronostasis. Left is assault, right is tank.)</span></div>
 
 											<br />
 											<h3>Did It Work?</h3>
 
 											<p>
-												
+												The enemies went a long way for making Chronostasis feeling as engaging as it does. They create a lot of the proper flow between players and enemies, and when there's multiple on screen
+												for players to deal with, it starts to get pretty exhilarating to pick and choose your battles against them, and trying to properly defend and punish their moves.
+											</p>
+											<p>
+												They feed in to the macro gameplay loop really well, too, as you kill more enemies to get more resources for a better chance of dealing with future enemies,
+												and the hecticness continues to ramp up as the waves go by. Players enjoyed fighting against the enemies, and they would stay hooked in the moment up until they either
+												failed and died, or succeeded and beat all the waves.
+											</p>
+											<p>
+												While it was good to have the enemies' attacks be reactable, they definitely anticipated their attacks for too long, leading to a lot of moments of players standing still
+												or large openings where they could be attacked. The fast-paced nature of the game slowed down pretty significantly with these slower moves, leading to the game feeling
+												less cut-throat and more like sitting out and waiting for things to happen.
+											</p>
+											<p>
+												With this, I also realized in the middle of development that with these larger times, while I thought they might be necessary, would have led to players continuously
+												slashing at the enemies while they were charging their attacks, which would mean a lot of these systems I built out would start falling apart. My "solution" for the time was
+												to simply prevent them from entering a stagger for the whole duration of their wind-up, which did the job, but is not a very good solution to rely on.
 											</p>
 
 											<br />
 											<h3>Future Improvements</h3>
 
 											<p>
-												
+												With the basis of these systems in place, on a base level Chronostasis can do with more enemies and attacks while still retaining this gameplay flow. That said, even
+												if a lot of the design was successful, as outlined earlier work still needs to be done to make the gameplay stand out even further.
 											</p>
+											<p>
+												As stated, enemies currently act and react pretty slowly for the genre they're supposed to be in, so the animations need to be tuned for a more fluid gameplay flow
+												so players aren't just twiddling their thumbs as they fight the enemies. That, and probably also adding more attacks or replacing existing ones to be a bit more flashy
+												and cause more effects, like better knockback or other more proper ways of pressuring the player in more unique ways.
+											</p>
+											<p>
+												Another is to fix up the staggering system so it's not a simple "can" or "can't" be staggered depending on the animation, and needs to be just a little more dynamic
+												to squeeze some extra life into the game. Having certain windows to stagger is still a good tool, however it shouldn't be the only solution, as some enemies might be
+												weaker and more frail to attacks compared to others who might strong-arm through more attacks. And even the player might have some options that are more effective for staggering
+												the opponent compared to others, which would allow them to try and plan things better in the heat of combat.
+											</p>
+											<p>
+												I was able to figure out a solution for this by asking a Kingdom Hearts modder how it seems to work in that game where there's a lot more to staggering,
+												and the solution that KH2 uses is by comparing the values of an attack with the values of an enemy's "defenses", which can be altered for different attacks and animations.
+											</p>
+											<p>
+												If the player's attack is able to pierce the enemy's armor, they can be opened up for staggering, and their defenses would get lowered while they're staggered.
+												Although, if the player's attack is too weak, the enemy won't stagger.
+												This solution seems a lot better and can influence fights in a lot more interesting ways, where players might need to plan out which moves they can use to properly stagger,
+												while still keeping enemies from being interrupted and maintaining that flow between enemies and players.
+											</p>
+
 											</details>
 										</div>
 
