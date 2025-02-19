@@ -121,7 +121,7 @@
 												<li><a href="#macro">Macro Gameplay Loop</a></li>
 											</ol>
 											
-											Within each of these, I will talk about:
+											Within each of these, I explain with:
 											</p>
 											<p>
 											<ul>
@@ -241,8 +241,17 @@
 											<br />
 											<h3>Breakdown</h3>
 
+											<div class="col-4"><span class="image fit"><img src="../../images/time stopping code.PNG" alt="" /></span></div>
 											<p>
-												fdsafdsf
+												The Chronostasis mechanic was built into a component that could be attached to any actor in a scene. While the player does need to build up a resource in order to use it,
+												once they pressed the button to stop time, it would send out to all other actors in the scene with that component attached, and stop them in place
+												by setting their custom time dilation to a really low value.
+											</p>
+											<p>
+												
+											</p>
+											<p>
+												Once the main character's resource runs out, or when 
 											</p>
 
 											<br />
@@ -353,7 +362,7 @@
 
 											<details><summary><h2 class="major" style="display:inline-block">5. Macro Gameplay Loop</h2></summary>
 												<p>This section goes over the overarching gameplay and features players can experience during the demo.
-													Specifically, it will be a look at the wave-based mode.</p>
+													Specifically, it will be a look at the wave-based mode and death/respawning.</p>
 											<br />
 
 											<h3>Explanation</h3>
@@ -377,17 +386,24 @@
 											<p><span class="image left"><img height="auto" width="100%" src="../../images/chrono wave mode.jpg" alt="" /></span>
 												For the wave based mode, the first thing I did was draft this structure for customizing waves. You could designate how many total waves there are, and within each one you can
 												customize which enemies spawn, how many of them spawn, and potential rewards given to the player upon finishing that wave.
-											</p>
-											<p>
 												For the actual implementation, the wave based functionality was put onto a placeable actor, with a radius around the object to designate the range where enemies could spawn in.
-												For the wave-based actor to know if the spawned enemy was killed, it builds an array when each enemy spawns in, binds to each enemy's "OnDeath" dispatcher, and removes that actor from the array.
 											</p>
 											<p>
-												If all are removed, the current wave ends,
-												and the next wave begins, spawning the new actors in that wave's list of enemies. The wave then plays certain sound effects or music that might play on that wave,
-												either within the actor or from a dispatcher bind on another.
+												With the wave mode itself, the game starts out with only a small handful of enemies spawned, and gradually progresses throughout the waves to spawn more and more.
+												If you don't do quite as well throughout the waves, the game will continue to get harder and harder, and the mistakes start to pile up. There is only a small window between waves
+												for you to take a breather or pick up some loose drops, but it still poses a challenge for players to go through.
 											</p>
-												<div class="col-4"><span class="image fit"><img src="../../images/wave mode engine.PNG" alt="" /></span></div>
+											<p>
+												If the player doesn't make it through all the waves, the player dies by going to another level where little exists. While other games may provide more of a UI option for respawning,
+												I thought it'd be a better idea to have a small "playground" for players to mess around in. Having an area like this can serve the same purpose as a UI box to retry the game,
+												but it also gives players a chance to take a longer break, and either walk around or practice some attacks in a light training room, before eventually jumping back in to the game.
+												It also triples as an area that could be theorized about as it relates to the story.
+											</p>
+											<p>
+												And when players are ready, they can go up to the only item in front of them and interact with it to respawn back in the main map, where they have another try at the waves,
+												hopefully looking to beat them in this next run.
+											</p>
+											<div class="col-4"><span class="image fit"><img src="../../images/death world.png" alt="" />(The death map, where it's just you, the respawn point, and open space.)</span></div>
 
 											<br />
 											<h3>Did It Work?</h3>
@@ -402,6 +418,12 @@
 												On the developer end, it was really easy to hot swap enemies and amounts of them. If I needed more waves or wanted to tweak things around, it was easy to change them up.
 												Although, it is fairly barebones, and I would like to make more adjustments in the future for better support of other features seen in other games with wave based encounters.
 											</p>
+											<p>
+												The death area was a cool one for people to discover, and it served its purpose pretty well.
+												For the most part, players would either just run up and respawn, or stay in the room when they were done or just wanted to take a small break.
+												For those that tried to explore some more quickly got lost, and very few even used it for experimenting with their kit.
+												Though, this behavior was mostly seen where the game was shown at events, where time may have been more limited.
+											</p>
 
 											<br />
 											<h3>Future Improvements</h3>
@@ -412,16 +434,12 @@
 												With that in mind, I think it would be wonderful to expand these systems for more flexibility later down the road so we can reuse the wave format in other contexts.
 											</p>
 											<p>
-												While things do work out okay as they are, there is a lot of room for things to be expanded on. Currently, the waves are handled on an actor that's placed in game, though considering it is
-												a "game mode", I would like to extend that functionality to part of Unreal's own game mode system so the game can handle different types of experiences.
+												Such expansions could be in making the waves as part of Unreal's own game mode system for a more structured eperience for players, adding infinite rounds, staggering the enemy spawns,
+												or otherwise changing things up so they can be used in a lot of other areas in the game.
 											</p>
 											<p>
-												Some things that I think could be improved on for the functionality of the waves themselves is to support endless waves with dynamic spawns to see how far players get,
-												and support mid-round spawning. As it is now, every enemy in the wave spawns at once, but having the game stagger a wave out or keep a more manageable limit of actors I think would work better.
-											</p>
-											<p>
-												And speaking of spawning, the enemies only spawn within a random range. Some other games like to spawn enemies in particular positions,
-												so adding support for custom placements would help a lot as well.
+												For the death area, the structure is fine, though there does need to be more general improvements, like making animations for dying and respawning, or adding more guides
+												for the player to go to the center if they veer their camera too far away.
 											</p>
 											</details>
 										</div>
