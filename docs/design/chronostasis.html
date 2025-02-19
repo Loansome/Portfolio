@@ -364,20 +364,22 @@
 
 											<br />
 											<p>
-												For the defensive actions, the dodge and block animations are single animation montages that can't normally be cancelled into an attack.
-												Dodging is a one time animation that moves the player and prevents them from being damaged for a certain amount of time,
-												and blocking has a window where attacks from the front will negate damage and shift the player to another "success" animation where the player is invulnerable
-												and more capable of attacking.
-											</p>
-
-											<br />
-											<p>
 												<span class="image left"><img src="../../images/damage values.png" alt="" /></span>
 												Attacks also can do certain kinds of things when they hit an enemy. Hitboxes can spawn with a specified radius, either on the player or on their equipped weapon at certain socket points,
 												and they can not only deal raw damage to their target, but they can deal different kinds of knockback, regenerate some Chrono on each hit, and apply a certain level of Revenge Value on each hit.
 											</p>
 											<p>
-												These extra settings give a lot more freedom for flexible and customizeable hits on enemies
+												These extra settings give a lot more freedom for flexible and customizeable hits on enemies, making each hit do things a little differently to stand out.
+												And with them being animation notify states, it is possible to have multiple hitboxes with differing values on a single attack that cause different effects.
+												Some attacks may push enemies farther away, some might bring them in, others might hit more enemies and refill the player's Chrono bar a little faster, and others can just deal good damage.
+											</p>
+
+											<br />
+											<p>
+												For the defensive actions, the dodge and block animations are single animation montages that can't normally be cancelled into an attack.
+												Dodging is a one time animation that moves the player and prevents them from being damaged for a certain amount of time,
+												and blocking has a window where attacks from the front will negate damage and shift the player to another "success" animation where the player is invulnerable
+												and more capable of attacking.
 											</p>
 
 											<br />
