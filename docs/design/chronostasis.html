@@ -241,31 +241,59 @@
 											<br />
 											<h3>Breakdown</h3>
 
-											<div class="col-4"><span class="image fit"><img src="../../images/time stopping code.PNG" alt="" /></span></div>
+											<div class="col-4"><span class="image fit"><video height="auto" width="100%" controls muted><source src="../../videos/time stop.mp4"></video></span></div>
 											<p>
 												The Chronostasis mechanic was built into a component that could be attached to any actor in a scene. While the player does need to build up a resource in order to use it,
-												once they pressed the button to stop time, it would send out to all other actors in the scene with that component attached, and stop them in place
-												by setting their custom time dilation to a really low value.
+												once they pressed the button to stop time, it would send out to all other actors in the scene with that component attached.
+												Once the main character's resource runs out, or when they press the button again, time will resume again, and all functionality returns to normal.
 											</p>
 											<p>
-												
+												When Chronostasis is active, actors are stopped in place by setting their custom time dilation to a really low value,
+												or otherwise changing their behavior to stay in place (such as with physics objects).
+												This not only causes all actors to slow down to a crawl, but also allows other functions to act differently depending on the state, such as enemies disabling their hitboxes.
 											</p>
 											<p>
-												Once the main character's resource runs out, or when 
+												From a design standpoint, Chronostasis is meant to be a mechanic you build up to, almost like an ultimate ability. As you play, you grind up the resource, and once it's full,
+												you can activate it and get certain benefits for doing so.
+											</p>
+											<p>
+												For some players, this benefit can be used defensively. It regenerates some of your health as it remains active, and all enemies stop, so you can use it to reposition yourself
+												and get a better hand on the game.
+												For other players, it can be used offensively. If you attack enemies or are able to beat them and get the pickups, you can sustain Chronostasis for longer and generate more health,
+												but also because enemies are frozen, it is a free period for players to fit in some extra damage. 
 											</p>
 
 											<br />
 											<h3>Did It Work?</h3>
 
 											<p>
-												
+												For this demo, it worked out fairly well. It did great for setting this game apart from others, and there is some potential for a mechanic such as this in a more expanded game,
+												though for this demo I'm not sure if it had enough "sauce" for players to really latch on to it as well.
+												The game <i>can</i> still be beaten without using Chronostasis, even if there are some benefits to using it, and while there is some free damage, having to manage between yourself and enemies
+												while time is running does have a more engaging feel to it.
+											</p>
+											<p>
+												It was pretty common for people to forget about the mechanic for a minute before remembering to use it, though in playtests, players were still using it regularly as the game was running.
+												So it could have enough merit to using it.
 											</p>
 
 											<br />
 											<h3>Future Improvements</h3>
 
 											<p>
-
+												Chronostasis was ultimately a mechanic built for another system that isn't in this demo, where the player could shoot weapons. Players could shoot enemies in the base game,
+												though if time is stopped, the bullets would stay in place until time resumed, where they would all collapse onto the enemy. If/When this mechanic makes its way into the game,
+												Chronostasis will likely feel a lot differently.
+											</p>
+											<p>
+												With that, I think most of the features that would make Chronostasis more appealing would be based on other features/mechanics that eventually make their way into the game.
+												More complex combos, resources, or features in a level that use the same functionality would result in the mechanic feeling a lot more satisfying to use.
+											</p>
+											<p>
+												Although, this mechanic does need a few small adjustments/improvements. On a technical side, this mechanic only interacts with other blueprint actors with the component attached,
+												so it can't interact with non-actors, such as raw static meshes in a scene. From a design standpoint, some other features that could help would be to change stat values,
+												like it does with health, to make it more viable and rewarding to build up to. Others would be turning it into more of a resource by allowing some moves to only be accessible
+												by spending the Chrono gauge for higher damaging moves.
 											</p>
 											</details>
 										</div>
