@@ -115,13 +115,13 @@
 
 											<ol>
 												<li><a href="#controls">Control Scheme</a></li>
-												<li><a href="#macro">Macro Gameplay Loop</a></li>
 												<li><a href="#chrono">Chronostasis Mechanic</a></li>
 												<li><a href="#player">Player Actions/Attacks</a></li>
 												<li><a href="#micro">Micro Gameplay Loop (Enemies)</a></li>
+												<li><a href="#macro">Macro Gameplay Loop</a></li>
 											</ol>
 											
-											Within each of these, I will talk about:
+											Within each of these, I explain with:
 											</p>
 											<p>
 											<ul>
@@ -211,92 +211,12 @@
 											</details>
 										</div>
 
-										<!-- Macro Loop -->
-										<div>
-											<a id="macro"></a>
-											<br /><br />
-
-											<details><summary><h2 class="major" style="display:inline-block">2. Macro Gameplay Loop</h2></summary>
-												<p>This section goes over the overarching gameplay and features players can experience during the demo.
-													Specifically, it will be a look at the wave-based mode.</p>
-											<br />
-
-											<h3>Explanation</h3>
-
-											<p>
-												For Chronostasis's play session, the general gameplay loop for players is to fight against waves of enemies, likely dying and going to the death world,
-												where the player can choose to respawn and try the waves again, or spend a second to relax or practice the game before trying again.
-											</p>
-											<p>
-												For the main gameplay mode, I built out a customizeable system for spawning waves of enemies, where designers could change how many waves there are, which kinds of enemies spawn when, and
-												how many spawn on each wave. If you defeat all the enemies on one wave, the game will take a second before spawning the next wave, until there's none left, where the player "wins".
-											</p>
-											<p>
-												When players die to an enemy in the middle of the game, they will be sent to another world where players can freely take a small break, choose to practice the mechanics and controls,
-												or walk up to and interact with the object in the center of the room to respawn. When respawning, the player is taken back to the main level and restarts the waves.
-											</p>
-
-											<br />
-											<h3>Breakdown</h3>
-
-											<p><span class="image left"><img height="auto" width="100%" src="../../images/chrono wave mode.jpg" alt="" /></span>
-												For the wave based mode, the first thing I did was draft this structure for customizing waves. You could designate how many total waves there are, and within each one you can
-												customize which enemies spawn, how many of them spawn, and potential rewards given to the player upon finishing that wave.
-											</p>
-											<p>
-												For the actual implementation, the wave based functionality was put onto a placeable actor, with a radius around the object to designate the range where enemies could spawn in.
-												For the wave-based actor to know if the spawned enemy was killed, it builds an array when each enemy spawns in, binds to each enemy's "OnDeath" dispatcher, and removes that actor from the array.
-											</p>
-											<p>
-												If all are removed, the current wave ends,
-												and the next wave begins, spawning the new actors in that wave's list of enemies. The wave then plays certain sound effects or music that might play on that wave,
-												either within the actor or from a dispatcher bind on another.
-											</p>
-												<div class="col-4"><span class="image fit"><img src="../../images/wave mode engine.PNG" alt="" /></span></div>
-
-											<br />
-											<h3>Did It Work?</h3>
-
-											<p>
-												On the player side, having the wave-based format within a small arena was a big success for getting people accustomed with the game, without us needing to spend any extra development time.
-												People were battling enemies, dying, and coming back to do better in the next game after they learned a bit more about the underlying systems.
-												The final game has about 5 waves, and most people were able to get past one or two of them before they had to retry. After a few tries, once they got a better hang of the combat,
-												they could get through the battles more consistently and could eventually finish all 5 waves.
-											</p>
-											<p>
-												On the developer end, it was really easy to hot swap enemies and amounts of them. If I needed more waves or wanted to tweak things around, it was easy to change them up.
-												Although, it is fairly barebones, and I would like to make more adjustments in the future for better support of other features seen in other games with wave based encounters.
-											</p>
-
-											<br />
-											<h3>Future Improvements</h3>
-
-											<p>
-												Some games have players in a pure endless horde of enemies, some have more defined waves to battle through and eventually beat, and some might just have a section of the map
-												where players are stuck and need to defeat all the remaining enemies before they can progress. And in some games, they have all 3 systems at different points of the same game.
-												With that in mind, I think it would be wonderful to expand these systems for more flexibility later down the road so we can reuse the wave format in other contexts.
-											</p>
-											<p>
-												While things do work out okay as they are, there is a lot of room for things to be expanded on. Currently, the waves are handled on an actor that's placed in game, though considering it is
-												a "game mode", I would like to extend that functionality to part of Unreal's own game mode system so the game can handle different types of experiences.
-											</p>
-											<p>
-												Some things that I think could be improved on for the functionality of the waves themselves is to support endless waves with dynamic spawns to see how far players get,
-												and support mid-round spawning. As it is now, every enemy in the wave spawns at once, but having the game stagger a wave out or keep a more manageable limit of actors I think would work better.
-											</p>
-											<p>
-												And speaking of spawning, the enemies only spawn within a random range. Some other games like to spawn enemies in particular positions,
-												so adding support for custom placements would help a lot as well.
-											</p>
-											</details>
-										</div>
-
 										<!-- Chronostasis -->
 										<div>
 											<a id="chrono"></a>
 											<br /><br />
 
-											<details><summary><h2 class="major" style="display:inline-block">3. Chronostasis Mechanic</h2></summary>
+											<details><summary><h2 class="major" style="display:inline-block">2. Chronostasis Mechanic</h2></summary>
 												<p>This section goes over the Chronostasis mechanic, where players have the ability to stop time mid-battle.</p>
 											<br />
 
@@ -321,22 +241,59 @@
 											<br />
 											<h3>Breakdown</h3>
 
+											<div class="col-4"><span class="image fit"><video height="auto" width="100%" controls muted><source src="../../videos/time stop.mp4"></video></span></div>
 											<p>
-												fdsafdsf
+												The Chronostasis mechanic was built into a component that could be attached to any actor in a scene. While the player does need to build up a resource in order to use it,
+												once they pressed the button to stop time, it would send out to all other actors in the scene with that component attached.
+												Once the main character's resource runs out, or when they press the button again, time will resume again, and all functionality returns to normal.
+											</p>
+											<p>
+												When Chronostasis is active, actors are stopped in place by setting their custom time dilation to a really low value,
+												or otherwise changing their behavior to stay in place (such as with physics objects).
+												This not only causes all actors to slow down to a crawl, but also allows other functions to act differently depending on the state, such as enemies disabling their hitboxes.
+											</p>
+											<p>
+												From a design standpoint, Chronostasis is meant to be a mechanic you build up to, almost like an ultimate ability. As you play, you grind up the resource, and once it's full,
+												you can activate it and get certain benefits for doing so.
+											</p>
+											<p>
+												For some players, this benefit can be used defensively. It regenerates some of your health as it remains active, and all enemies stop, so you can use it to reposition yourself
+												and get a better hand on the game.
+												For other players, it can be used offensively. If you attack enemies or are able to beat them and get the pickups, you can sustain Chronostasis for longer and generate more health,
+												but also because enemies are frozen, it is a free period for players to fit in some extra damage. 
 											</p>
 
 											<br />
 											<h3>Did It Work?</h3>
 
 											<p>
-												
+												For this demo, it worked out fairly well. It did great for setting this game apart from others, and there is some potential for a mechanic such as this in a more expanded game,
+												though for this demo I'm not sure if it had enough "sauce" for players to really latch on to it as well.
+												The game <i>can</i> still be beaten without using Chronostasis, even if there are some benefits to using it, and while there is some free damage, having to manage between yourself and enemies
+												while time is running does have a more engaging feel to it.
+											</p>
+											<p>
+												It was pretty common for people to forget about the mechanic for a minute before remembering to use it, though in playtests, players were still using it regularly as the game was running.
+												So it could have enough merit to using it.
 											</p>
 
 											<br />
 											<h3>Future Improvements</h3>
 
 											<p>
-
+												Chronostasis was ultimately a mechanic built for another system that isn't in this demo, where the player could shoot weapons. Players could shoot enemies in the base game,
+												though if time is stopped, the bullets would stay in place until time resumed, where they would all collapse onto the enemy. If/When this mechanic makes its way into the game,
+												Chronostasis will likely feel a lot differently.
+											</p>
+											<p>
+												With that, I think most of the features that would make Chronostasis more appealing would be based on other features/mechanics that eventually make their way into the game.
+												More complex combos, resources, or features in a level that use the same functionality would result in the mechanic feeling a lot more satisfying to use.
+											</p>
+											<p>
+												Although, this mechanic does need a few small adjustments/improvements. On a technical side, this mechanic only interacts with other blueprint actors with the component attached,
+												so it can't interact with non-actors, such as raw static meshes in a scene. From a design standpoint, some other features that could help would be to change stat values,
+												like it does with health, to make it more viable and rewarding to build up to. Others would be turning it into more of a resource by allowing some moves to only be accessible
+												by spending the Chrono gauge for higher damaging moves.
 											</p>
 											</details>
 										</div>
@@ -346,7 +303,7 @@
 											<a id="player"></a>
 											<br /><br />
 
-											<details><summary><h2 class="major" style="display:inline-block">4. Player Actions/Attacks</h2></summary>
+											<details><summary><h2 class="major" style="display:inline-block">3. Player Actions/Attacks</h2></summary>
 												<p>This section goes over the specifics about player combat, such as attack animation roles and hitboxes.</p>
 											<br />
 
@@ -393,7 +350,7 @@
 											<a id="micro"></a>
 											<br /><br />
 
-											<details><summary><h2 class="major" style="display:inline-block">5. Micro Gameplay Loop (Enemies)</h2></summary>
+											<details><summary><h2 class="major" style="display:inline-block">4. Micro Gameplay Loop (Enemies)</h2></summary>
 												<p>This section goes over enemy roles and features, and how they contribute to the moment-to-moment gameplay flow.</p>
 											<br />
 
@@ -422,6 +379,95 @@
 
 											<p>
 												
+											</p>
+											</details>
+										</div>
+
+										<!-- Macro Loop -->
+										<div>
+											<a id="macro"></a>
+											<br /><br />
+
+											<details><summary><h2 class="major" style="display:inline-block">5. Macro Gameplay Loop</h2></summary>
+												<p>This section goes over the overarching gameplay and features players can experience during the demo.
+													Specifically, it will be a look at the wave-based mode and death/respawning.</p>
+											<br />
+
+											<h3>Explanation</h3>
+
+											<p>
+												For Chronostasis's play session, the general gameplay loop for players is to fight against waves of enemies, likely dying and going to the death world,
+												where the player can choose to respawn and try the waves again, or spend a second to relax or practice the game before trying again.
+											</p>
+											<p>
+												For the main gameplay mode, I built out a customizeable system for spawning waves of enemies, where designers could change how many waves there are, which kinds of enemies spawn when, and
+												how many spawn on each wave. If you defeat all the enemies on one wave, the game will take a second before spawning the next wave, until there's none left, where the player "wins".
+											</p>
+											<p>
+												When players die to an enemy in the middle of the game, they will be sent to another world where players can freely take a small break, choose to practice the mechanics and controls,
+												or walk up to and interact with the object in the center of the room to respawn. When respawning, the player is taken back to the main level and restarts the waves.
+											</p>
+
+											<br />
+											<h3>Breakdown</h3>
+
+											<p><span class="image left"><img height="auto" width="100%" src="../../images/chrono wave mode.jpg" alt="" /></span>
+												For the wave based mode, the first thing I did was draft this structure for customizing waves. You could designate how many total waves there are, and within each one you can
+												customize which enemies spawn, how many of them spawn, and potential rewards given to the player upon finishing that wave.
+												For the actual implementation, the wave based functionality was put onto a placeable actor, with a radius around the object to designate the range where enemies could spawn in.
+											</p>
+											<p>
+												With the wave mode itself, the game starts out with only a small handful of enemies spawned, and gradually progresses throughout the waves to spawn more and more.
+												If you don't do quite as well throughout the waves, the game will continue to get harder and harder, and the mistakes start to pile up. There is only a small window between waves
+												for you to take a breather or pick up some loose drops, but it still poses a challenge for players to go through.
+											</p>
+											<p>
+												If the player doesn't make it through all the waves, the player dies by going to another level where little exists. While other games may provide more of a UI option for respawning,
+												I thought it'd be a better idea to have a small "playground" for players to mess around in. Having an area like this can serve the same purpose as a UI box to retry the game,
+												but it also gives players a chance to take a longer break, and either walk around or practice some attacks in a light training room, before eventually jumping back in to the game.
+												It also triples as an area that could be theorized about as it relates to the story.
+											</p>
+											<p>
+												And when players are ready, they can go up to the only item in front of them and interact with it to respawn back in the main map, where they have another try at the waves,
+												hopefully looking to beat them in this next run.
+											</p>
+											<div class="col-4"><span class="image fit"><img src="../../images/death world.png" alt="" />(The death map, where it's just you, the respawn point, and open space.)</span></div>
+
+											<br />
+											<h3>Did It Work?</h3>
+
+											<p>
+												On the player side, having the wave-based format within a small arena was a big success for getting people accustomed with the game, without us needing to spend any extra development time.
+												People were battling enemies, dying, and coming back to do better in the next game after they learned a bit more about the underlying systems.
+												The final game has about 5 waves, and most people were able to get past one or two of them before they had to retry. After a few tries, once they got a better hang of the combat,
+												they could get through the battles more consistently and could eventually finish all 5 waves.
+											</p>
+											<p>
+												On the developer end, it was really easy to hot swap enemies and amounts of them. If I needed more waves or wanted to tweak things around, it was easy to change them up.
+												Although, it is fairly barebones, and I would like to make more adjustments in the future for better support of other features seen in other games with wave based encounters.
+											</p>
+											<p>
+												The death area was a cool one for people to discover, and it served its purpose pretty well.
+												For the most part, players would either just run up and respawn, or stay in the room when they were done or just wanted to take a small break.
+												For those that tried to explore some more quickly got lost, and very few even used it for experimenting with their kit.
+												Though, this behavior was mostly seen where the game was shown at events, where time may have been more limited.
+											</p>
+
+											<br />
+											<h3>Future Improvements</h3>
+
+											<p>
+												Some games have players in a pure endless horde of enemies, some have more defined waves to battle through and eventually beat, and some might just have a section of the map
+												where players are stuck and need to defeat all the remaining enemies before they can progress. And in some games, they have all 3 systems at different points of the same game.
+												With that in mind, I think it would be wonderful to expand these systems for more flexibility later down the road so we can reuse the wave format in other contexts.
+											</p>
+											<p>
+												Such expansions could be in making the waves as part of Unreal's own game mode system for a more structured eperience for players, adding infinite rounds, staggering the enemy spawns,
+												or otherwise changing things up so they can be used in a lot of other areas in the game.
+											</p>
+											<p>
+												For the death area, the structure is fine, though there does need to be more general improvements, like making animations for dying and respawning, or adding more guides
+												for the player to go to the center if they veer their camera too far away.
 											</p>
 											</details>
 										</div>
