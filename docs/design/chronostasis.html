@@ -311,10 +311,11 @@
 
 											<p>
 												For players to attack while keeping the simplicity of the controls in mind, the attacks are (currently) split into a combo-based structure. Pressing the attack button sequentially
-												allows players to commit to a 3 hit combo, 
+												allows players to commit to a 3 hit combo, each with their own hit counts and damage values. In order for players to access their whole range of attacks, they have to do each attack in order.
 											</p>
 											<p>
-												Defense 
+												For defense, they have the option to either dodge with i-frames, or block the attack in front of them. These are two separate actions that play an animation, and the player has to
+												commit to whatever action they do, meaning they can't cancel out of them to do an attack or another defensive move.
 											</p>
 											<p>
 												
@@ -324,14 +325,67 @@
 											<h3>Breakdown</h3>
 
 											<p>
-												
+												While attacks are only a simple 3 hit combo, I specficially had them serve a different role in the game's combat. Time was limited and we couldn't get a more advanced system in place,
+												so the next best thing was to have the combat and attack animations have enough weight and differentiate themselves from each other to still make it satisfying to play.
+											</p>
+											<p>
+												<span class="image fit"><video height="auto" width="100%" controls autoplay loop muted><source src="../../videos/attack dash.mp4"></video></span>
+												The player starts their combo with an attack that pulls the player closer to their enemies, and unleashes a handful of extra swipes on them.
+												This attack was made so players can start getting right into the action without worrying too much about their positioning to the enemy. If the player sees an opportunity
+												and is within range, or just dodged a narrow attack, they can jump right in and start doing some damage.
+											</p>
+											<p>
+												This move also has some baked-in blocking frames when dashing in, so if the player attacks at just the right time, they can run up and guard their opponent's attacks
+												before continuing their offense. While it does send the player into a blocking state, this also has an unintended effect where the combo isn't reset,
+												so the player can go straight into the next attack after a block instead of having to restart if they land the block.
+											</p>
+											<p>
+												The multi-hit attacks towards the end do deal some extra damage, however the player can choose to cancel out of it if they'd wish to continue their combo
+												instead or try to dash away from an incoming attack.
+											</p>
+											<p>
+												<span class="image fit"><video height="auto" width="100%" controls autoplay loop muted><source src="../../videos/attack vicinity.mp4"></video></span>
+												Since the first attack has already gotten the player closer to the enemy as a single target move, this second attack is built more for AOE damage against a group of enemies.
+												Seeing as the main game mode of the demo is wave based and focused on mob fights, there needs to be a move to handle multiple enemies as you strike. 
+											</p>
+											<p>
+												<span class="image fit"><video height="auto" width="100%" controls autoplay loop muted><source src="../../videos/attack finisher.mp4"></video></span>
+												The final move is a flashy finisher and is the player's reward for completing the combo. While it may seem long,
+												the spinning part of the attack has parry frames attached, protecting you from hits,
+												and the attack itself dashes straight forward and deals a sizeable amount of damage to anything that comes across it.
+											</p>
+
+											<p>
+												These extra details go a long way to make sure combat does not feel repetitive, even if you're using the same 3 moves over and over. Each one has a role to play, and players can
+												learn and adapt to them. And with those smaller details of cancelling attacks or defensive abilities, both new and veteran players have things to enjoy.
+												For all players, they get control over the combat in their own way. New players aren't punished as hard for making "mistakes", while players that want more depth
+												can find the timings for when they might be safe or where they might be able to squeeze more damage out to make full use of these attacks.
+											</p>
+
+											<br />
+											<p>
+												For the defensive actions, the dodge and block animations are single animation montages that can't normally be cancelled into an attack.
+												Dodging is a one time animation that moves the player and prevents them from being damaged for a certain amount of time,
+												and blocking has a window where attacks from the front will negate damage and shift the player to another "success" animation where the player is invulnerable
+												and more capable of attacking.
+											</p>
+
+											<br />
+											<p>
+												<span class="image left"><img src="../../images/damage values.png" alt="" /></span>
+												Attacks also can do certain kinds of things when they hit an enemy. Hitboxes can spawn with a specified radius, either on the player or on their equipped weapon at certain socket points,
+												and they can not only deal raw damage to their target, but they can deal different kinds of knockback, regenerate some Chrono on each hit, and apply a certain level of Revenge Value on each hit.
+											</p>
+											<p>
+												These extra settings give a lot more freedom for flexible and customizeable hits on enemies
 											</p>
 
 											<br />
 											<h3>Did It Work?</h3>
 
 											<p>
-												
+
+												d
 											</p>
 
 											<br />
