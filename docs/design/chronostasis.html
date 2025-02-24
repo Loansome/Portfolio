@@ -147,7 +147,7 @@
 											</p>
 											<p>
 												This is the control scheme I came up with for gamepad users:
-												<img height="auto" width="100%" src="../../images/chronostasis controller reference.png" alt="" />
+												<div class="col-4"><span class="image fit"><img src="../../images/chronostasis controller reference.png" alt="" /></span></div>
 											</p>
 											<p>
 												For keyboard and mouse, WASD, the mouse, and space are move, look, and jump respectively, as any other PC game would.
@@ -167,7 +167,7 @@
 											</p>
 
 											<video height="auto" width="100%" controls muted>
-												<source src="../../videos/Control Showcase.mp4">
+												<source src="../../videos/Controls.mp4">
 											</video>
 
 											<br /><br />
@@ -190,6 +190,7 @@
 											<br />
 											<h3>Future Improvements</h3>
 
+											<div class="col-4"><span class="image left"><img src="../../images/Tutorial Example.png" alt="" /></span></div>
 											<p>
 												The first improvement should definitely be with some way of explaining the controls to players new to the game, whether that's with a menu explanation, some text in the corner of the game,
 												or with a more fleshed out tutorial. Players should be able to start the game and immediately understand what they have access to and how they can use everything to their advantage.
@@ -241,18 +242,13 @@
 
 											<div class="col-4"><span class="image fit"><video height="auto" width="100%" controls muted><source src="../../videos/time stop.mp4"></video></span></div>
 											<p>
-												The Chronostasis mechanic was built into a component that could be attached to any actor in a scene. While the player does need to build up a resource in order to use it,
-												once they pressed the button to stop time, it would send out to all other actors in the scene with that component attached.
-												Once the main character's resource runs out, or when they press the button again, time will resume again, and all functionality returns to normal.
+												From a design standpoint, Chronostasis is meant to be a mechanic you build up to, almost like an ultimate ability. As you play, you grind up the resource, and once it's full,
+												you can activate it and get certain benefits for doing so.
 											</p>
 											<p>
 												When Chronostasis is active, actors are stopped in place by setting their custom time dilation to a really low value,
 												or otherwise changing their behavior to stay in place (such as with physics objects).
-												This not only causes all actors to slow down to a crawl, but also allows other functions to act differently depending on the state, such as enemies disabling their hitboxes.
-											</p>
-											<p>
-												From a design standpoint, Chronostasis is meant to be a mechanic you build up to, almost like an ultimate ability. As you play, you grind up the resource, and once it's full,
-												you can activate it and get certain benefits for doing so.
+												Other functions can act differently depending on the state too, such as enemies disabling their hitboxes.
 											</p>
 											<p>
 												For some players, this benefit can be used defensively. It regenerates some of your health as it remains active, and all enemies stop, so you can use it to reposition yourself
@@ -335,18 +331,14 @@
 											</p>
 											<p>
 												<span class="image fit"><video height="auto" width="100%" controls autoplay loop muted><source src="../../videos/attack dash.mp4"></video></span>
-												The player starts their combo with an attack that pulls the player closer to their enemies, and unleashes a handful of extra swipes on them.
-												This attack was made so players can start getting right into the action without worrying too much about their positioning to the enemy. If the player sees an opportunity
-												and is within range, or just dodged a narrow attack, they can jump right in and start doing some damage.
+												The player starts their combo with an attack for players to start getting right into the action. If the player sees an opportunity
+												and is within range, or just dodged a narrow attack, they can jump in close and start doing some damage.
+												The multi-hit attacks towards the end does deal some extra damage, however the player can choose to cancel out of it if they'd wish.
 											</p>
 											<p>
-												This move also has some baked-in blocking frames when dashing in, so if the player attacks at just the right time, they can run up and guard their opponent's attacks
-												before continuing their offense. While it does send the player into a blocking state, this also has an unintended effect where the combo isn't reset,
-												so the player can go straight into the next attack after a block instead of having to restart if they land the block.
-											</p>
-											<p>
-												The multi-hit attacks towards the end do deal some extra damage, however the player can choose to cancel out of it if they'd wish to continue their combo
-												instead or try to dash away from an incoming attack.
+												This move also has some blocking frames when dashing in, so if the player attacks at just the right time, they can run up and guard their opponent's attacks
+												before continuing their offense. This also has an unintended effect where the combo isn't reset,
+												so the player can go straight into the next attack after a block instead of having to restart their combo chain.
 											</p>
 											<p>
 												<span class="image fit"><video height="auto" width="100%" controls autoplay loop muted><source src="../../videos/attack vicinity.mp4"></video></span>
@@ -367,22 +359,19 @@
 											
 											<p>
 												These extra details go a long way to make sure combat does not feel repetitive, even if you're using the same 3 moves over and over. Each one has a role to play, and players can
-												learn and adapt to them. And with those smaller details of cancelling attacks or defensive abilities, both new and veteran players have things to enjoy.
-												For all players, they get control over the combat in their own way. New players aren't punished as hard for making "mistakes", while players that want more depth
-												can find the timings for when they might be safe or where they might be able to squeeze more damage out to make full use of these attacks.
+												learn and adapt to them. And with those smaller details of attack cancelling and defensive abilities, both new and veteran players have things to enjoy.
 											</p>
 
 											<br />
 											<p>
 												<span class="image left"><img src="../../images/damage values.png" alt="" /></span>
-												Attacks also can do certain kinds of things when they hit an enemy. Hitboxes can spawn with a specified radius, either on the player or on their equipped weapon at certain socket points,
-												and they can not only deal raw damage to their target, but they can deal different kinds of knockback, regenerate some Chrono on each hit, and apply a certain level of Revenge Value on each hit
+												Hitboxes can spawn with a specified radius, either on the player or on their equipped weapon,
+												and they can not only deal raw damage, but also deal different kinds of knockback, regenerate some Chrono, or apply some Revenge Value
 												(see the Enemy section for info on RV).
 											</p>
 											<p>
-												These extra settings give a lot more freedom for flexible and customizeable hits on enemies, making each hit do things a little differently to stand out.
-												And with them being animation notify states, it is possible to have multiple hitboxes with differing values on a single attack that cause different effects.
-												Some attacks may push enemies farther away, some might bring them in, others might hit more enemies and refill the player's Chrono bar a little faster, and others can just deal good damage.
+												These extra settings give a lot of flexibility, making each hit do things a little differently to further that "attack role" style of design.
+												And with them being animation notify states, multiple hitboxes can have differing effects, all on a single attack.
 											</p>
 
 											<br />
