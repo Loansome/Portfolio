@@ -52,17 +52,62 @@
 							<div class="wrapper">
 								<div class="inner">
 
-									<h3 class="major">Chronostasis</h3>
-									<p>Chronostasis is a game where you stop time</p>
+									<h3 class="major">Cosmic Combat</h3>
+									<p>
+										For this project, I worked as a technical animator on a 50+ team to bridge the gap between all disciplines to get animations looking and feeling good in-engine.
+										When the project began, almost nobody else on the team knew anything about rigging or animating for games, or how any of these systems would intertwine with gameplay.
+										And while I did have my fair share of knowledge, there were still a few gaps on how things might work out.
+									</p>
+									
+									<video height="auto" width="100%" loop controls muted>
+										<source src="../../videos/CC/cosmic_combat_-_trailer_01 (1080p).mp4">
+									</video>
 
-									<h3 class="major">Lorem ipsum dolor</h3>
-									<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+									<br /><br />
 
-									<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+									<div>
+										<h3 class="major">Getting Things Right</h3>
+										<p>
+											When starting the project, the team looked into how Maya or Blender rigs might be compatible with Unreal.
+											We learned that the deformation bones should be separated from the control rig, yet still constrained in our DCC of choice, as only the deform bones will be transferred.
+											One of our biggest breakthroughs of the time was figuring out how to transfer scale into Unreal by using a flat deformation hierarchy.
+										</p>
+										<video height="auto" width="100%" autoplay loop controls muted>
+											<source src="../../videos/CC/Squash and Stretch Test Rig.mp4">
+										</video>
+
+										<br />
+										<div class="col-4"><span class="image fit"><img src="../../images/CC/Test Rig Joint Hierarchyy.png" alt="" /></span></div>
+										
+										<p>
+											Running with this, and with the experience I was learning about game animation from other projects
+											(see <a href="animation/unity-action.html">[Unity Combat System]</a> and <a href="animation/chronostasis.html">[Chronostasis]</a>),
+											I put together a document for our other animators and riggers to follow as we transitioned over to making custom assets.
+											We wanted things to look and feel snappy for players, and for no work to go unused.
+										</p>
+
+										<object data="Process for Implementing.pdf" type="application/pdf" width="100%" height="800">
+										</object>
+										<p></p>
+										<p>
+											While the game may be on the simpler side, a lot of work went into making sure every character was on track for being Unreal ready.
+											But once the rigs were set up and characters had their full animation sets completed, getting things hooked up in game took no longer than a few hours,
+											and it was a surprising joy to hear everyone's relief and excitement for seeing these creatures move about in game for the first time.
+										</p>
+										<video height="auto" width="100%" autoplay loop controls muted>
+											<source src="../../videos/CC/CC Characters Idle.mp4">
+										</video>
+										<div class="col-4"><span class="image fit"><img src="../../images/CC/War Torn ABP.png" alt="" /></span></div>
+									</div>
+
 
 									<h4>Left &amp; Right</h4>
-									<p><span class="image left"><img src="../../images/gtest.gif" alt="" /></span>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien. Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
-									<p><span class="image right"><img src="../../images/pic02.jpg" alt="" /></span>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius. Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat. Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui.</p>
+									<p><span class="image left"><img src="../../images/gtest.gif" alt="" /></span>
+										f
+									</p>
+									<p><span class="image right"><img src="../../images/pic02.jpg" alt="" /></span>
+										f
+									</p>
 
 									<h1><a href="../animation.html" class="button icon solid fa-home">Back to page</a></h1>
 
