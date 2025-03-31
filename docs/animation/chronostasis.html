@@ -60,35 +60,17 @@
 									<video height="auto" width="100%" controls muted>
 										<source src="../../videos/chronostasis trailer.mp4">
 									</video>
-									<br/><br/>
-
-									<!--ABP-->
-									<div>
-										<h3 class="major">Unreal Animation Setup</h3>
-										<p>
-											For the player character's animation blueprint, I set up a blendspace for locomotion based on player input,
-											and animation slots for when the character stops time. The wings on the player also bounce around and lag behind the player as they move around.
-										</p>
-										<video height="auto" width="100%" controls muted>
-											<source src="../../videos/ChronoAnim/Shion ABP Walkthrough.mp4">
-										</video>
-										<br/><br/>
-
-										<p>
-											Set up on the player BP itself is a variable for the equipped weapon the player has, which can then be spawned on a socket on the player rig.
-											The socket is attached to a different joint on the base rig, so the weapon can move about separately from the hands or rest of the player body.
-										</p>
-										<span class="image fit"><img src="../../images/ChronoAnim/Shion Rig.png" alt="" /></span>
-									</div>
+									<br/><br/><br/>
 
 									<!--Animations-->
 									<div>
 										<br />
 										
-										<details><summary><h3 class="major" style="display:inline-block">Player Animations (Click Me!)</h3></summary>
+										<details open><summary><h3 class="major" style="display:inline-block">Player Animations</h3></summary>
 											<p>
 												Here are some of the animations I made for the player character in Unreal.
-												All animations start differently in the first few frames to make them feel snappier,
+												The attack animations were built with Root Motion in mind, and
+												all animations start differently in the first few frames to make them feel snappier,
 												and all end in a pose that closely resembles the animation they'll transition into for a smooth blend.
 											</p>
 
@@ -131,10 +113,47 @@
 												Anticipation frames don't harm the player, giving a sense of "cool", and build to a satisfying resolution.
 											</p>
 											<br /><br />
-										</details>
-										<br /><br />
-									
+										</details>									
 									</div>
+
+
+									<!--ABP-->
+									<div>
+										<h3 class="major">Unreal Animation Setup</h3>
+										<p>
+											For the player character's animation blueprint, I set up a blendspace for locomotion based on player input,
+											and animation slots for when the character stops time. The wings on the player also bounce around and lag behind the player as they move around.
+										</p>
+										<video height="auto" width="100%" controls muted>
+											<source src="../../videos/ChronoAnim/Shion ABP Walkthrough.mp4">
+										</video>
+										<br/><br/>
+
+										<p>
+											Set up on the player BP itself is a variable for the equipped weapon the player has, which can then be spawned on a socket on the player rig.
+											The socket is attached to a different joint on the base rig, so the weapon can move about separately from the hands or rest of the player body.
+										</p>
+										<span class="image fit"><img src="../../images/ChronoAnim/Shion Rig.png" alt="" /></span>
+										<br /><br />
+									</div>
+
+									<div>
+										<h3 class="major">Weapons and Choosers</h3>
+										<p>
+											With that, the weapon has associated abilities attached to it that determine what abilities the player has access to.
+											Each of these abilities has animations attached to them with custom functionality related to that attack.
+										</p>
+										<span class="image fit"><img src="../../images/ChronoAnim/Scythe Data Asset.png" alt="" /></span>
+										<p>
+											When the player inputs an attack or triggers one of these abilities, it first goes through a Chooser to determine which attack will be triggered when.
+											It first goes through a base chooser asset that asks what weapon the player has equipped (currently just the scythe atm),
+											then checks each of the related abilities within that weapon to figure out which ability can fire, which is tied to their animation montage.
+										</p>
+										<span class="image fit"><img src="../../images/ChronoAnim/ChooserBase.png" alt="" /></span>
+										<span class="image fit"><img src="../../images/proximity chooser.png" alt="" /></span>
+									</div>
+
+									
 
 
 									<h1><a href="../animation.html" class="button icon solid fa-home">Back to page</a></h1>
