@@ -51,16 +51,91 @@
 								<div class="inner">
 
 									<h3 class="major">Chronostasis</h3>
-									<p>Chronostasis is a game where you stop time</p>
+									<p>
+										Chronostasis is a character action game where you can fight enemies in waves using a scythe and time-stopping powers.
+										<br /><br />
+										You can download the game <a href="http://chronostasisgame.com">here at chronostasisgame.com</a>!
+									</p>
 
-									<h3 class="major">Lorem ipsum dolor</h3>
-									<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+									<video height="auto" width="100%" controls muted>
+										<source src="../../videos/chronostasis trailer.mp4">
+									</video>
+									<br/><br/>
 
-									<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+									<!--ABP-->
+									<div>
+										<h3 class="major">Unreal Animation Setup</h3>
+										<p>
+											For the player character's animation blueprint, I set up a blendspace for locomotion based on player input,
+											and animation slots for when the character stops time. The wings on the player also bounce around and lag behind the player as they move around.
+										</p>
+										<video height="auto" width="100%" controls muted>
+											<source src="../../videos/ChronoAnim/Shion ABP Walkthrough.mp4">
+										</video>
+										<br/><br/>
 
-									<h4>Left &amp; Right</h4>
-									<p><span class="image left"><img src="../../images/gtest.gif" alt="" /></span>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien. Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo, tempus sed finibus eget, fringilla quis risus. Maecenas et lorem quis sem varius sagittis et a est. Maecenas iaculis iaculis sem. Donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
-									<p><span class="image right"><img src="../../images/pic02.jpg" alt="" /></span>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec dui cursus, posuere dui eget interdum. Fusce lectus magna, sagittis at facilisis vitae, pellentesque at etiam. Quisque posuere leo quis sem commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius. Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat. Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui.</p>
+										<p>
+											Set up on the player BP itself is a variable for the equipped weapon the player has, which can then be spawned on a socket on the player rig.
+											The socket is attached to a different joint on the base rig, so the weapon can move about separately from the hands or rest of the player body.
+										</p>
+										<span class="image fit"><img src="../../images/ChronoAnim/Shion Rig.png" alt="" /></span>
+									</div>
+
+									<!--Animations-->
+									<div>
+										<br />
+										
+										<details><summary><h3 class="major" style="display:inline-block">Player Animations (Click Me!)</h3></summary>
+											<p>
+												Here are some of the animations I made for the player character in Unreal.
+												All animations start differently in the first few frames to make them feel snappier,
+												and all end in a pose that closely resembles the animation they'll transition into for a smooth blend.
+											</p>
+
+											<h4>Jumping</h4>
+											<video height="auto" width="100%" autoplay loop controls muted>
+												<source src="../../videos/ChronoAnim/Shion Jump.mp4">
+											</video>
+											<p>
+												A jump with some quick wind-up to make it feel snappy for the player.
+											</p>
+											<br /><br />
+
+											<h4>Gap-Closer Attack</h4>
+											<video height="auto" width="100%" autoplay loop controls muted>
+												<source src="../../videos/attack dash.mp4">
+											</video>
+											<p>
+												An attack meant for closing in on an opponent and doing quick damage.
+												Anticipation frames are short, and the multi-hit attack can be canceled out if players want more control.
+											</p>
+											<br /><br />
+
+											<h4>AOE Vicinity Attack</h4>
+											<video height="auto" width="100%" autoplay loop controls muted>
+												<source src="../../videos/attack vicinity.mp4">
+											</video>
+											<p>
+												A close range, AOE attack meant for hitting foes that surround the player.
+												Also short anticipation frames, and the two swipes provide enough range to give the player an air of protection against enemies.
+												Yet, if mis-timed, the player may be open to damage.
+											</p>
+											<br /><br />
+
+											<h4>Finisher Attack</h4>
+											<video height="auto" width="100%" autoplay loop controls muted>
+												<source src="../../videos/attack finisher.mp4">
+											</video>
+											<p>
+												Seemingly long winded, but serves as a cinematic end-point to the player's combo chain.
+												Anticipation frames don't harm the player, giving a sense of "cool", and build to a satisfying resolution.
+											</p>
+											<br /><br />
+										</details>
+										<br /><br />
+									
+									</div>
+
 
 									<h1><a href="../animation.html" class="button icon solid fa-home">Back to page</a></h1>
 
