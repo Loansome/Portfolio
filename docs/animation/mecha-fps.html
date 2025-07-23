@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Gabriel Salomone Portfolio - Chronostasis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">Gabriel Salomone</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about-me.html">About Me</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Gabriel Salomone</h2>
+								<p>Technical 3D Animator</p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+									<h3 class="major">Mecha FPS Project</h3>
+									<p>
+										This work-in-progress FPS game is a 2 person project where I handle the 3D animation and rigging pipeline for Unreal.
+									</p>
+
+									<div class="col-4"><span class="image fit"><video height="auto" width="100%" controls muted>
+										<source src="../../videos/MechaFPS/mecha fps showcase.mp4">
+									</video></span></div>
+									
+									<br/><br/>
+
+
+									<!--Animations-->
+									<div>
+										<br />
+										
+										<summary><h3 class="major" style="display:inline-block">Mech Arms Rig</h3></summary>
+											<p>
+												The arms are rigged to be fully feature-rich, with IK and FK systems, weapon socket points with swappable parents,
+												and stretching capabilities. On top of that, for the "mecha" aspect of the arms, I also rigged the arms with
+												some extra features, like rotating the forearm and extra parts without affecting the rest of the rig.
+											</p>
+											<p>
+												Here is a side-by-side of a test animation made in Blender before being exported into Unreal.
+												As you can see, a lot of the same functionality makes its way to the final game!
+											</p>
+
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-6"><span class="image fit"><video height="auto" width="100%" autoplay loop controls muted>
+														<source src="../../videos/MechaFPS/arm stretch test blender.mp4">
+													</video></span></div>
+													<div class="col-6"><span class="image fit"><video height="auto" width="100%" autoplay loop controls muted>
+														<source src="../../videos/MechaFPS/arm stretch test unreal.mp4">
+													</video></span></div>
+												</div>
+											</div>
+											<br /><br />
+
+											<summary><h3 class="major" style="display:inline-block">Animation Syncing</h3></summary>
+											<p>
+												On top of the base rig for the arms, I also built functionality to support multiple rig animations at one time.
+												The arm's socket bones and weapon root bones are rigged to make parenting easier in a live game,
+												making sure that all the animations align perfectly as they show up in Blender.
+											</p>
+											<p>
+												In this shooting animation, for instance, you can see that not only do the arms move, but the pistol properly slides,
+												and the camera moves as well. To remind you, the arms and weapons are separate rigs, with the camera animation
+												being exported out as a Camera Shake asset in Unreal.
+											</p>
+											
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-6"><span class="image fit"><video height="auto" width="100%" autoplay loop controls muted>
+														<source src="../../videos/MechaFPS/shoot blender.mp4">
+													</video></span></div>
+													<div class="col-6"><span class="image fit"><video height="auto" width="100%" autoplay loop controls muted>
+														<source src="../../videos/MechaFPS/shoot unreal.mp4">
+													</video></span></div>
+												</div>
+											</div>
+
+											<p>
+												To achieve this, I linked all of the animations into a data asset to quickly swap out the arm, weapon, and camera animations.
+												Then, when the player shoots, reloads, or does any other action I want to specify, it calls a funtion to sync all the animations together,
+												using the Montage Sync Follow node.
+												Using GAS and data assets together in this modular format make it easy to swap out for other gun types, as well!
+											</p>
+											
+											<div class="box alt">
+												<div class="row gtr-uniform">
+													<div class="col-6"><span class="image fit"><img src="../../images/MechaFPS/arm weapon camera animations.png" alt="" /></span></div>
+													<div class="col-6"><span class="image fit"><img src="../../images/MechaFPS/shoot sync bp.png" alt="" /></span></div>
+												</div>
+											</div>
+											<div class="col-4"><span class="image fit"><img src="../../images/MechaFPS/sync anim bp.png" alt="" /></span></div>
+
+										<br /><br />
+									</div>
+
+
+									<!--ABP-->
+									<div>
+										<h3 class="major">Unreal Animation Setup</h3>
+										<p>
+											Finally, for the player character's animation blueprint, I set up a state tree to check which weapon you have equipped for the arms
+											(currently just the pistol and base arms), and created 2 additive blendspaces.
+											<br />
+											One of these blendspaces is an additive bobbing animation to simulate walking on the ground, and the other blendspace uses
+											5 different poses to determine where the player is currently moving.
+										</p>
+										<video height="auto" width="100%" controls muted>
+											<source src="../../videos/MechaFPS/mecharms abp showcase.mp4">
+										</video>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-6"><span class="image fit"><video height="auto" width="100%" autoplay loop controls muted>
+													<source src="../../videos/MechaFPS/run blendspace.mp4">
+												</video></span></div>
+												<div class="col-6"><span class="image fit"><video height="auto" width="100%" autoplay loop controls muted>
+													<source src="../../videos/MechaFPS/angle blendspace.mp4">
+												</video></span></div>
+											</div>
+										</div>
+
+										<p>
+											And that's where the animations are at! In the future, I will be adding support for aerial movement such as jumping and landing,
+											on top of some other animations like a "ready" or inspect for when you first pick up the gun.
+											On top of that, with the way everything is set up, it should be much easier to create and implement other weapons and animations.
+											It's good to think modularly!
+										</p>
+										<br/><br/>
+									
+
+
+									<h1><a href="../animation.html" class="button icon solid fa-home">Back to page</a></h1>
+
+									</section>
+
+								</div>
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you see something you like, feel free to reach out!</p>
+						
+						<ul class="contact">
+							<li class="icon solid fa-envelope"><a>gabrielsalomone.art@gmail.com</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/gabriel-salomone-630917218/">Connect on LinkedIn</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
